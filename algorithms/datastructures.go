@@ -8,3 +8,8 @@ type Node struct {
 type StackLinked struct {
 	First *Node
 }
+
+func (s *StackLinked) Push(data string) {
+	n := Node{data, s.First}
+	s.First = &n
+}
