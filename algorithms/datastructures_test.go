@@ -1,9 +1,6 @@
 package ds
 
-import (
-	"fmt"
-	"testing"
-)
+import "testing"
 
 func TestNode(t *testing.T) {
 	a := Node{"Hello", nil}
@@ -15,6 +12,17 @@ func TestNode(t *testing.T) {
 	if &a != b.Next {
 		t.Error("b.next does not equal &")
 	}
+}
+
+func TestStack(t *testing.T) {
+	s := Stack{}
+
+	s.Push("Hohoho")
+
+	if s.Pop() != "Hohoho" {
+		t.Error("Stack.Pop() does not return last pushed entry")
+	}
+
 }
 
 func TestStackLinked(t *testing.T) {
@@ -29,9 +37,12 @@ func TestStackLinked(t *testing.T) {
 	}
 
 	s.Push("Hohoho")
-	fmt.Println(s.First.Data)
 	if s.First.Data != "Hohoho" {
 		t.Error("stack.First.Data does not match s.Push(Data)")
+	}
+
+	if s.Pop() != "Hohoho" {
+		t.Error("stack.Pop() does not return last pushed entry")
 	}
 
 }
